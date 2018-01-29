@@ -54,7 +54,7 @@ ROOT_URLCONF = 'appsuite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['notes/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
