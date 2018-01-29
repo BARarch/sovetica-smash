@@ -9,3 +9,9 @@ def index(request):
     rc = RequestContext(request,{'user':request.user})
     rc2 = {'username':'Anthony Quivers'}
     return HttpResponse(template.render(rc2))
+
+def example(request):
+    
+    template = loader.get_template('examples.html')
+    rc2 = {'username':'Anthony Quivers'}
+    return HttpResponse(template.render(rc2))
