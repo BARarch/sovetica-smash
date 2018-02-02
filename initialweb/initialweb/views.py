@@ -1,12 +1,14 @@
 from django.shortcuts import render
 
 class Article:
-    def __init__(self, title, content):
+    def __init__(self, title, content, id):
+        self.id = id
         self.title = title
         self.content = content
         
 def index(request):
     article1 = Article(
+                        id=1,
                         title='Article1',
                         content='''article 1 content.
                         This is a multi-line peice of content
@@ -14,6 +16,7 @@ def index(request):
                         )
 
     article2 = Article(
+                        id=2,
                         title='Article2',
                         content='''article 2 content.
                         This is a multi-line peice of content
@@ -21,6 +24,7 @@ def index(request):
                         )
 
     article3 = Article(
+                        id=3,
                         title='Article3',
                         content='''article 3 content.
                         This is a multi-line peice of content
@@ -28,9 +32,7 @@ def index(request):
                         )
     
     content = {
-        'article1':article1,
-        'article2':article2,
-        'article3':article3,    
+        'articles':[article1, article2, article3]  
     }
     
     return render(request, 'index.html', content)

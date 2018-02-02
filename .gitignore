@@ -2,3 +2,5 @@ venv/
 appsuite/appsuite/__pycache__/
 appsuite/notes/__pycache__/
 initialweb/initialweb/__pycache__/
+appsuite/.ipynb_checkpoints
+appsuite/Dict-Review.ipynb
