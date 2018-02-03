@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from datetime import datetime
 
 class Article:
     def __init__(self, title, content, id):
@@ -32,7 +33,23 @@ def index(request):
                         )
     
     content = {
-        'articles':[article1, article2, article3]  
+        'articles':[article1, article2, article3],
+        'current_date': datetime.now(),
+        'title': "Home"
     }
     
     return render(request, 'index.html', content)
+
+def about(request):
+    content = {
+        'current_date': datetime.now(),
+        'title':'about'
+    }   
+    return render(request, 'about.html', content)
+    
+def news(request):
+    content = {
+        'current_date': datetime.now(),
+        'title':'news'
+    }  
+    return render(request, 'news.html', content)
