@@ -35,3 +35,11 @@ body > .container {
 code {
   font-size: 80%;
 }
+
+body {
+    padding-top: 140px;
+}
+
+body > .container {
+    padding-top: 140px;
+}

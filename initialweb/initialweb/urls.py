@@ -23,8 +23,9 @@ from .views import index, about, news
 
 urlpatterns = [
     url(r'^$', index),
-    url(r'^about/$', about),
-    url(r'^news/$', news),
+    url(r'^home$', index, name='home'),
+    url(r'^about/$', about, name='about'),
+    url(r'^news/$', news, name='news'),
     url(r'^admin/', admin.site.urls),
     
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
