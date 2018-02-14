@@ -1,38 +1,15 @@
 from django.shortcuts import render
 from datetime import datetime
+from .models import Article
 
-class Article:
-    def __init__(self, title, content, id):
-        self.id = id
-        self.title = title
-        self.content = content
+
         
 def get_articles():
-    article1 = Article(
-                        id=1,
-                        title='Article1',
-                        content='''article 1 content.
-                        This is a multi-line peice of content
-                        This is the last line'''
-                        )
-
-    article2 = Article(
-                        id=2,
-                        title='Article2',
-                        content='''article 2 content.
-                        This is a multi-line peice of content
-                        This is the last line'''
-                        )
-
-    article3 = Article(
-                        id=3,
-                        title='Article3',
-                        content='''article 3 content.
-                        This is a multi-line peice of content
-                        This is the last line'''
-                        )
     
-    return [article1, article2, article3]
+    result = Article.objects.all()
+    
+    
+    return result
         
 def index(request):
     
@@ -52,9 +29,21 @@ def about(request):
     return render(request, 'about.html', content)
     
 def news(request):
+    
+    populate_db()
+    
+    articles = get_articles()
+    
     content = {
-        'articles': get_articles(),
+        'articles': articles,
         'current_date': datetime.now(),
         'title':'News'
     }  
     return render(request, 'news.html', content)
+
+def populate_db():
+    if Article.objects.count() == 0:
+        Article(title = 'first item', content='this is the first db item').save()
+        Article(title = 'second item', content='this is the second item').save()
+        Article(title = 'third item', content='this is the last item for now').save()
+        
